@@ -128,4 +128,29 @@ def parse_preamble(notice_xml):
     intro = parse_intro(notice_xml, label[0])
     if intro:
         root_node.children.insert(0, intro)
+
+    # Add metadata from the notice to the preamble:
+    meta = {
+        "supporting_documents": [
+            {"regs_id": "AAAAA", "title": "A document title"},
+            {"regs_id": "BBBBB", "title": "B document title"},
+            {"regs_id": "CCCCC", "title": "C document title"},
+            {"regs_id": "DDDDD", "title": "D document title"},
+            {"regs_id": "EEEEE", "title": "E document title"},
+        ],
+        "primary_docket": "DOCKETDOCKET",
+        "primary_agency": "Environmental Protection Agency",
+        "title": "EPA's new proposal",
+        "comments_close": "2016-05-29",
+        "publication": "2016-02-29",    # to be removed
+        "publication_date": "2016-02-29",
+        "cfr_parts": [{"title": "40", "parts": ["300"]}], # to be removed
+        "cfr_refs": [{"title": "40", "parts": ["300"]}],
+        "dockets": ["EPA-HQ-SFUND-2010-1086",
+                    "FRL-9925-69-OLEM"],
+        "rins": ["2050-AG67"],  # to be removed
+        "regulatory_id_numbers": ["2050-AG67"],
+    }
+    root_node.meta = meta
+
     return root_node

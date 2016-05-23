@@ -21,7 +21,7 @@ class Node(object):
     MARKERLESS_REGEX = re.compile(r'p\d+')
 
     def __init__(self, text='', children=[], label=[], title=None,
-                 node_type=REGTEXT, source_xml=None):
+                 node_type=REGTEXT, source_xml=None, meta=None):
 
         self.text = unicode(text)
 
@@ -33,6 +33,8 @@ class Node(object):
         self.title = title or None
         self.node_type = node_type
         self.source_xml = source_xml
+        if meta:
+            self.meta = meta
 
     def __repr__(self):
         return (("Node( text = %s, children = %s, label = %s, title = %s, " +
@@ -97,7 +99,7 @@ class NodeEncoder(JSONEncoder):
 class FullNodeEncoder(JSONEncoder):
     """Encodes Nodes into JSON, not losing any of the fields"""
     FIELDS = set(['text', 'children', 'label', 'title', 'node_type',
-                  'source_xml', 'tagged_text'])
+                  'source_xml', 'tagged_text', 'meta'])
 
     def default(self, obj):
         if isinstance(obj, Node):

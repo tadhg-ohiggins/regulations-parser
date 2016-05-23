@@ -22,6 +22,7 @@ class CommandsDiffsTests(TestCase):
 
     def assert_diff_keys(self, lhs_id, rhs_id, keys):
         entry = self.diff_dir / lhs_id / rhs_id
+        import nose; import rlcompleter; import pdb; zcomp = locals(); zcomp.update(globals()); pdb.Pdb.complete = rlcompleter.Completer(zcomp).complete; nose.tools.set_trace()
         self.assertItemsEqual(keys, entry.read().keys())
 
     def test_diffs_generated(self):

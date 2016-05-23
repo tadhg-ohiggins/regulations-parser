@@ -171,6 +171,7 @@ class Diff(_JSONEntry):
 
 class Preamble(_JSONEntry):
     """Processes notice preambles, keyed by document id"""
+
     PREFIX = (ROOT, 'preamble')
     JSON_ENCODER = FullNodeEncoder
     JSON_DECODER = staticmethod(full_node_decode_hook)
