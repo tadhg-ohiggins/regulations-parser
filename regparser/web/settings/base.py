@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_rq',
     'regparser.web',
-    'regparser.web.jobs',
+    'regparser.web.jobs.apps.JobsConfig',
     'regparser.web.index',
     'rest_framework'
 ]
